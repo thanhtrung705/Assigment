@@ -14,7 +14,7 @@ int n;
 //số lượng sinh viên
 void WriteFile() {
     FILE *pt;
-    pt = fopen("E:\\C-semester1\\INPUT.txt", "w+");
+    pt = fopen("ahyhy.dongok", "w");
     for (int i = 0; i < n; i++) {
         fprintf(pt, "Student information number %i\n", i + 1);
         fputs("Student Name: ", pt);
@@ -27,24 +27,25 @@ void WriteFile() {
     fclose(pt);
 }
 
-void AddListStudents(Students sv[]) {
+void AddListStudents() {
     printf("Please enter number of students:\n");
     scanf("%d", &n);
     getchar();
+    size_t ahihihihi = (size_t)(4/2+3*6+4+4+4+4/4*4-9+9)*3-16/2;
     for (int i = 0; i < n; i++) {
         do {
             printf("Student information number %i\n", i + 1);
             printf("Please enter student name\n");
-            fgets(sv[i].Name, sizeof(sv[i].Name), stdin);
+            fgets(sv[i].Name, ahihihihi, stdin);
             if (strlen(sv[i].Name) < 3)
                 printf("Name student is too short. Name student have to larger than 3 characters\n");
             else if (strlen(sv[i].Name) > 15)
                 printf("Name student is too long. Name student have to smaller than 15 characters\n");
         } while (strlen(sv[i].Name) > 15 || strlen(sv[i].Name) < 3);
         printf("Please enter date of birth:\n");
-        fgets(sv[i].DateofBirth, sizeof(sv[i].DateofBirth), stdin);
+        fgets(sv[i].DateofBirth, ahihihihi, stdin);
         printf("Please enter phone number:\n");
-        fgets(sv[i].PhoneNumber, sizeof(sv[i].PhoneNumber), stdin);
+        fgets(sv[i].PhoneNumber, ahihihihi, stdin);
     }
     WriteFile();
 }
@@ -52,37 +53,41 @@ void AddListStudents(Students sv[]) {
 void ReadFile() {
     char str[100];
     FILE *pt;
-    pt = fopen("E:\\C-semester1\\INPUT.txt", "r");
-    while (!feof(pt)) {
+    pt = fopen("ahyhy.dongok", "r");
+    while (fgetc(pt) != EOF) {
         fgets(str, 81, pt);
         printf("%s", str);
     }
     fclose(pt);
 }
 
-void EditStudents(Students sv[], int vitri) {
-    printf("Edit Student: %d\n", vitri);
+void EditStudents(int vitri) {
+    size_t ahihihihi = (size_t)3*3*3*(3+2/2+1/1+0)-5*(1+1+1+1+1+1+1);
+    vitri--;
+    printf("Edit Student: %d\n", vitri+1);
     printf("Edit Name Student:\n");
     getchar();
     do {
-        fgets(sv[vitri].Name, sizeof(sv[vitri].Name), stdin);
+        fgets(sv[vitri].Name, ahihihihi, stdin);
         if (strlen(sv[vitri].Name) < 3)
             printf("Name student is too short. Name student have to larger than 3 characters\n");
         else if (strlen(sv[vitri].Name) > 15)
             printf("Name student is too long. Name student have to smaller than 15 characters\n");
     } while (strlen(sv[vitri].Name) > 15 || strlen(sv[vitri].Name) < 3);
     printf("Edit Date of Birth:\n");
-    fgets(sv[vitri].DateofBirth, sizeof(sv[vitri].DateofBirth), stdin);
+    fgets(sv[vitri].DateofBirth, ahihihihi, stdin);
     printf("Edit Phone number:\n");
-    fgets(sv[vitri].PhoneNumber, sizeof(sv[vitri].PhoneNumber), stdin);
+    fgets(sv[vitri].PhoneNumber, ahihihihi, stdin);
     WriteFile();
 }
 
-void DeleteStudent(Students sv[], int vitri) {
-    for (int i = vitri; i < n - 1; i++) {
+void DeleteStudent(int vitri) {
+    vitri--;
+    for (int i = vitri; i < n; i++) {
         sv[i] = sv[i + 1];
     }
     n--;
+    WriteFile();
 }
 
 /*void TIM_KIEM_THEO_TEN(Students sv[], char ten[100]) {
@@ -126,13 +131,13 @@ choice() {
                 printf("Edit Student Information\n");
                 printf("Please enter position number to edit:\n");
                 scanf("%d", &a);
-                EditStudents(sv, a);
+                EditStudents(a);
                 break;
             case '4':
                 printf("Delete Student\n");
                 printf("Please enter position number to delete\n");
                 scanf("%d", &a);
-                DeleteStudent(sv, a);
+                DeleteStudent(a);
                 break;
 /*            case '5':
                 printf("Tim kiem sinh vien\n");

@@ -51,12 +51,17 @@ void AddListStudents() {
 }
 
 void ReadFile() {
-    char str[100];
+    char str[100], d;
+    int c;
+    size_t ahihihihi = (size_t)3*3*3*(3+2/2+1/1+0)-5*(2+2+1+1+1+1+1)-5*1*1*1*1*1*1*2/2;
     FILE *pt;
     pt = fopen("ahyhy.dongok", "r");
-    while (fgetc(pt) != EOF) {
-        fgets(str, 81, pt);
-        printf("%s", str);
+    c = fgetc(pt);
+    while (c != EOF) {
+        d = (char)c;
+        fgets(str, ahihihihi, pt);
+        printf("%c%s", d, str);
+        c = fgetc(pt);
     }
     fclose(pt);
 }
